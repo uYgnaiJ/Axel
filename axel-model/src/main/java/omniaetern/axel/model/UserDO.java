@@ -13,7 +13,7 @@ public class UserDO{
 
     public String name;
 
-    public String password;
+    public String passwordHash;
 
     public String email;
 

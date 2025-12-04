@@ -3,8 +3,10 @@ package omniaetern.axel.entry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EntityScan("omniaetern.axel.admin.model")
+@EntityScan("omniaetern.axel.model")
+@EnableJpaRepositories("omniaetern.axel.admin.repository")
 @SpringBootApplication(scanBasePackages = "omniaetern.axel")
 public class AxelEntryApplication {
 

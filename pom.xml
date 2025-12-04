@@ -18,6 +18,7 @@
 	<description>A Software Development Requirement Management System</description>
 
 	<modules>
+		<module>axel-common</module>
 		<module>axel-model</module>
 		<module>axel-admin</module>
 		<module>axel-entry</module>
