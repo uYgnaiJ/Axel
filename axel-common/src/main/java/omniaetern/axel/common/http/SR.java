@@ -11,6 +11,8 @@ public class SR<T> extends StandardResponse<T> {
         this.data = data;
     }
 
+    public static SR<?> success(){return new SR<>();}
+
     public static <T> SR<T> success(T data) {
         return new SR<>(ErrorCode.SUCCESS.code, ErrorCode.SUCCESS.message, data);
     }

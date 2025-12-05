@@ -12,7 +12,17 @@ public class DepartmentDO {
 
     public String name;
 
-    public Long parentId;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    public DepartmentDO parent;
 
     public DepartmentStatus status;
+
+    public DepartmentDO(String name, DepartmentDO parent) {
+        this.name = name;
+        this.parent = parent;
+        this.status = DepartmentStatus.IN_USE;
+    }
+
+    public DepartmentDO() {}
 }

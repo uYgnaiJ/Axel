@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "users")
 public class UserDO{
@@ -21,14 +23,25 @@ public class UserDO{
 
     @ManyToOne
     @JoinColumn(name = "department_id")
-    public DepartmentDO departmentId;
+    public DepartmentDO department;
 
     @CreationTimestamp
     @Column(updatable = false)
-    public String createTime;
+    public LocalDateTime createTime;
 
     @UpdateTimestamp
-    public String updateTime;
+    public LocalDateTime updateTime;
 
-    public boolean deleted;
+    public boolean deleted = false;
+
+    public LocalDateTime deleteTime;
+
+    public UserDO(String name, String passwordHash, String email, String mobile) {
+        this.name = name;
+        this.passwordHash = passwordHash;
+        this.email = email;
+        this.mobile = mobile;
+    }
+
+    public UserDO() {}
 }
