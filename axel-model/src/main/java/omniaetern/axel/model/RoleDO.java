@@ -15,7 +15,7 @@ public class RoleDO {
 
     public String remark;
 
-    public boolean deleted;
+    public boolean deleted = false;
 
     public RoleDO() {}
 

@@ -17,7 +17,7 @@ public class RolePermissionRelation {
     @JoinColumn(name = "permission_id")
     public PermissionDO permission;
 
-    public boolean deleted;
+    public boolean deleted = false;
 
     public RolePermissionRelation(RoleDO role, PermissionDO permission) {
         this.role = role;
