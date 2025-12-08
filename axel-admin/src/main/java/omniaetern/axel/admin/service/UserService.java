@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class UserService {
     public void deleteUser(Long id){
         UserDO user = getUserById(id);
         user.deleted = true;
-        user.deleteTime = LocalDateTime.now();
+        user.deleteTime = Instant.ofEpochMilli(System.currentTimeMillis());
         userRepository.save(user);
     }
 

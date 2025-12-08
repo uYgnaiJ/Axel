@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 @Table(name = "users")
@@ -27,14 +27,14 @@ public class UserDO{
 
     @CreationTimestamp
     @Column(updatable = false)
-    public LocalDateTime createTime;
+    public Instant createTime;
 
     @UpdateTimestamp
-    public LocalDateTime updateTime;
+    public Instant updateTime;
 
     public boolean deleted = false;
 
-    public LocalDateTime deleteTime;
+    public Instant deleteTime;
 
     public UserDO(String name, String passwordHash, String email, String mobile) {
         this.name = name;

@@ -6,6 +6,10 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(1001, "User not found"),
     PASSWORD_MISMATCH(1002, "Password mismatch"),
+    PERMISSION_NOT_FOUND(1003, "Permission not found"),
+    DEPARTMENT_NOT_FOUND(1004, "Department not found"),
+    ROLE_NOT_FOUND(1005, "Role not found"),
+    ROLE_PERMISSION_RELATION_NOT_FOUND(1006, "Role permission relation not found"),
 
     SERVER_ERROR(9000, "Server Error")
     ;

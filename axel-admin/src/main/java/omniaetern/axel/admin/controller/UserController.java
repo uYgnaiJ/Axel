@@ -30,8 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/page")
-    public SR<Page<UserInfo>> getUsers(UserSearchRequest request,
-                                       @PageableDefault(page = 0, size = 10) Pageable pageable
+    public SR<Page<UserInfo>> getUsers(UserSearchRequest request, @PageableDefault Pageable pageable
     ){
         return SR.success(userService.getUserInfoInPage(request, pageable));
     }

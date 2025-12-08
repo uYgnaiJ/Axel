@@ -12,7 +12,7 @@
 
 	<groupId>omniaetern</groupId>
 	<artifactId>axel</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Axel</name>
 	<description>A Software Development Requirement Management System</description>

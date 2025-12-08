@@ -27,13 +27,12 @@ public class DepartmentController {
     }
 
     @GetMapping("/page/root")
-    public SR<Page<DepartmentDO>> getRootDepartments(@PageableDefault(page = 0, size = 10) Pageable pageable) {
+    public SR<Page<DepartmentDO>> getRootDepartments(@PageableDefault Pageable pageable) {
         return SR.success(departmentService.getRootDepartments(pageable));
     }
 
     @GetMapping("/page/children")
-    public SR<Page<DepartmentDO>> getChildrenDepartments(@NotNull Long id,
-                                                         @PageableDefault(page = 0, size = 10) Pageable pageable) {
+    public SR<Page<DepartmentDO>> getChildrenDepartments(@NotNull Long id, @PageableDefault Pageable pageable) {
         return SR.success(departmentService.getChildrenDepartments(id, pageable));
     }
 
