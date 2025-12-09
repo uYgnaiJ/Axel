@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 @Validated
-@Tag(name = "用户管理", description = "用户相关操作")
+@Tag(name = "User Administration", description = "User related apis")
 public class UserController {
     private final UserService userService;
 
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    @Operation(summary = "创建用户", description = "创建新用户")
+    @Operation(summary = "Create User", description = "Create new user in Axel")
     public SR<?> createNewUser(@RequestBody UserCreateRequest request){
         return SR.success(userService.createUser(request));
     }

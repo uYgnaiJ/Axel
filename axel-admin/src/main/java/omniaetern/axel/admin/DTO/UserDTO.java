@@ -10,7 +10,8 @@ public class UserDTO {
 
     public record UserInfo(Long id, String name, String email, String mobile, String departmentName){
         public UserInfo (UserDO user){
-            this(user.id, user.name, user.email, user.mobile, user.department.name);
+            this(user.id, user.name, user.email, user.mobile,
+                    user.department != null ? user.department.name : null);
         }
     }
 

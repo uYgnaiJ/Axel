@@ -13,8 +13,9 @@ public class GlobalExceptionHandler {
         return SR.error(ex.getErrorCode());
     }
 
-/*    @ExceptionHandler(Exception.class)
-    public SR<?> handleOtherExceptions(Exception ex) {
-        return SR.error(ErrorCode.SERVER_ERROR, ex.getMessage());
-    }*/
+//    @ExceptionHandler(Exception.class)
+//    public SR<?> handleOtherExceptions(Exception ex) {
+//        System.err.println(ex.getMessage());
+//        return SR.error(ErrorCode.SERVER_ERROR, ": " + ex.getMessage());
+//    }
 }

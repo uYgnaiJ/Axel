@@ -30,6 +30,9 @@ public class UserService {
     }
 
     public Long createUser(UserCreateRequest request) {
+        if (getUserByName(request.name())!=null){
+            throw new BusinessException(ErrorCode.USERNAME_DUPLICATE);
+        }
         String passwordHash = PasswordHandler.hashPassword(request.password());
         return userRepository.save(new UserDO(
                 request.name(), passwordHash, request.email(), request.mobile()
@@ -70,6 +73,10 @@ public class UserService {
 
     public UserDO getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    public UserDO getUserByName(String name) {
+        return userRepository.findByName(name);
     }
 
     public UserInfo getUserInfo(Long id){

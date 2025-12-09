@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RolePermissionService {
@@ -47,6 +49,16 @@ public class RolePermissionService {
         return rolePermissionRepository.findAll(spec, pageable);
     }
 
+    public List<RoleDO> getRolesByPermissionId(Long permissionId) {
+        List<RolePermissionRelation> relations = rolePermissionRepository.findAllByPermission_Id(permissionId);
+        return relations.stream().map(r -> r.role).collect(Collectors.toList());
+    }
+
+    public List<PermissionDO> getPermissionsByRoleId(Long roleId) {
+        List<RolePermissionRelation> relations = rolePermissionRepository.findAllByRole_Id(roleId);
+        return relations.stream().map(r -> r.permission).collect(Collectors.toList());
+    }
+
     public Long createRolePermissionRelation(RolePermissionRelationCreateRequest request) {
         if (request.roleId()==null || request.permissionId()==null) {
             throw new IllegalArgumentException("roleId and permissionId can't be null");
@@ -70,5 +82,9 @@ public class RolePermissionService {
         RolePermissionRelation relation = rolePermissionRepository.findById(id).orElseThrow(() -> new BusinessException(ErrorCode.ROLE_PERMISSION_RELATION_NOT_FOUND));
         relation.deleted = true;
         rolePermissionRepository.save(relation);
+    }
+
+    public Set<PermissionDO> getPermissionsByRoleIds(List<Long> roleIds) {
+        return rolePermissionRepository.findAllByRole_IdIn(roleIds).stream().map(r -> r.permission).collect(Collectors.toSet());
     }
 }

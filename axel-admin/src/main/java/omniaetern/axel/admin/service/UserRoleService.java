@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserRoleService {
@@ -47,6 +48,10 @@ public class UserRoleService {
         return userRoleRepository.findAll(spec, pageable);
     }
 
+    public List<UserRoleRelation> getUserRoleRelationById(Long userId){
+        return userRoleRepository.findByUserId(userId);
+    }
+
     public Long createUserRoleRelation(UserRoleRelationCreateRequest request) {
         if (request.userId()==null ||  request.roleId()==null) {
             throw new IllegalArgumentException("User and Role Id can't be null");
@@ -70,5 +75,9 @@ public class UserRoleService {
         UserRoleRelation relation = userRoleRepository.findById(id).orElseThrow(()->new BusinessException(ErrorCode.USER_ROLE_RELATION_NOT_FOUND));
         relation.deleted = true;
         userRoleRepository.save(relation);
+    }
+
+    public List<RoleDO> getRolesByIds(List<Long> roleIds) {
+        return userRoleRepository.findAllById(roleIds).stream().map(r -> r.role).collect(Collectors.toList());
     }
 }

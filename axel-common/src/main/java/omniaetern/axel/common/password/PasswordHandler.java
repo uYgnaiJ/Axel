@@ -34,14 +34,14 @@ public class PasswordHandler {
         String saltBase64 = Base64.getEncoder().encodeToString(salt);
         String passwordBase64 = Base64.getEncoder().encodeToString(hash);
 
-        return saltBase64 + ":" + passwordBase64;
+        return "{pbkdf2}:" + saltBase64 + ":" + passwordBase64;
     }
 
     public static boolean verifyPassword(String password, String storedPassword) {
         try {
             String[] parts = storedPassword.split(":");
-            byte[] salt = Base64.getDecoder().decode(parts[0]);
-            byte[] storedHash = Base64.getDecoder().decode(parts[1]);
+            byte[] salt = Base64.getDecoder().decode(parts[1]);
+            byte[] storedHash = Base64.getDecoder().decode(parts[2]);
 
             PBEKeySpec spec = new PBEKeySpec(
                     password.toCharArray(),

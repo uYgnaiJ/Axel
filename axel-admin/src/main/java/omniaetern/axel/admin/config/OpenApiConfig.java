@@ -20,18 +20,18 @@ public class OpenApiConfig {
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Axel 管理系统 API 文档")
-                        .description("软件研发需求管理系统 API 接口文档")
+                        .title("Axel RMS API Doc")
+                        .description("Software Development Requirement Management System API Documentation")
                         .version("v1.0.0")
                         .contact(new Contact()
-                                .name("开发团队")
-                                .email("dev@omniaetern.com")
-                                .url("https://github.com/omniaetern"))
+                                .name("The Team")
+                                .email("someone@omniaetern.autos")
+                                .url("https://github.com/"))
                         .license(new License()
                                 .name("MIT License")
                                 .url("https://opensource.org/licenses/MIT")))
                 .servers(List.of(
-                        new Server().url("http://localhost:8080").description("开发环境")
+                        new Server().url("http://localhost:8080").description("Dev Env")
                 ))
                 .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
                 .components(new io.swagger.v3.oas.models.Components()
@@ -45,7 +45,7 @@ public class OpenApiConfig {
     @Bean
     public GroupedOpenApi defaultApi() {
         return GroupedOpenApi.builder()
-                .group("所有接口")
+                .group("ALL APIs")
                 .pathsToMatch("/**")
                 .build();
     }
